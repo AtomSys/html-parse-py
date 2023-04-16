@@ -1,11 +1,14 @@
-def parse(html):
-    mode = 1
-    for letter in html:
-        if letter == "<":
-            if mode == 1:
-                mode = 2
-        if letter == ">":
-            if mode == "2":
-                mode = 3
-                    
-            
+from html.parser import HTMLParser
+
+class parser(HTMLParser):
+    def handle_starttag(self, tag, attrs):
+        print("Start Tag:", tag)
+
+    def handle_endtag(self, tag):
+        print("End Tag:", tag)
+
+    def handle_data(self, data):
+        print(data)
+
+parser = parser()
+
